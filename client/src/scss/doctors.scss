@@ -1,0 +1,39 @@
+.doctors_cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.doctor_card {
+    display: flex;
+    margin-bottom: 30px;
+    width: max-content;
+    max-width: 22%;
+    flex-direction: column;
+    text-align: center;
+    margin: 0 15px 20px;
+    border-radius: 10px;
+    box-shadow: 0 0px 7px rgb(0 0 0 / 10%);
+    padding: 27px 0 0 0;
+
+    img {
+        border-radius: 50%;
+        width: 85%;
+    }
+}
+
+.name {
+    font-size: 20px;
+    padding: 7px;
+}
+
+.specialty {
+    font-size: 18px;
+    color: #B1B1B1;
+}
+
+.position {
+    padding: 10px;
+    font-size: 14px;
+    color: #DDA12F;
+}
