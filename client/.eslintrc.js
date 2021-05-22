@@ -40,6 +40,7 @@ module.exports = {
         'handle-callback-err': ['error'],
         'max-len': ['warn', {code: 120}],
         'no-console': ['error'],
+        'object-curly-spacing': ['error', 'never'],
 
         'react/prop-types': 'off',
         'react/jsx-uses-react': 'error',
