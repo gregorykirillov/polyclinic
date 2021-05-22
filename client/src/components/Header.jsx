@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import homeSvg from '../assets/svg/home.svg'
+import homeSvg from '../assets/svg/home.svg';
 
 function Header() {
     return (
@@ -14,7 +14,7 @@ function Header() {
                 </ul>
             </nav>
         </div>
-    )
+    );
 }
 
-export default Header
+export default Header;
