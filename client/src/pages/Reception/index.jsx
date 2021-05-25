@@ -1,37 +1,44 @@
-import React, { useEffect, useState } from 'react';
-import Axios from 'axios';
-import "./reception.scss";
-import useSWR from 'swr';
+/* eslint-disable camelcase */
+import React, {useState, createContext, useContext} from 'react';
+
+import Modal from './components/Modal/Modal';
+import DoctorsList from './components/DoctorsList';
 import SpecialtyCard from './components/SpecialtyCard';
+import './reception.scss';
 
-function About() {
-    const [doctorList, setDoctorList] = useState([]);
+export const useSpec = () => useContext(SpecContext);
 
-    const { data, error } = useSWR('http://localhost:3001/api/get-doctors-by-specialty', { 'specialty': "Аллерголог" })
-    console.log(data);
+const defaultSpec = {
+    get spec() {throw new Error();},
+    setSpec() {throw new Error();},
+    get modalActive() {throw new Error();},
+    setModalActive() {throw new Error();},
+};
+const SpecContext = createContext(defaultSpec);
 
-    function setDoctors(specialty) {
-        Axios.post('http://localhost:3001/api/get-doctors-by-specialty', {
-            'specialty': specialty
-        }).then((response) => {
-            setDoctorList(response.data);
-        })
-    }
+const WithSpec = ({children}) => {
+    const [spec, setSpec] = useState(null);
+    const [modalActive, setModalActive] = useState(false);
 
     return (
-        <div className="container">
-            <h1 className="main_title">Reception</h1>
-            <SpecialtyCard setDoctors={setDoctors} />
-            <div className="doctors">
-                {doctorList.map((value) => {
-                    return (
-                        <div className="doctor">{value.full_name}</div>
-                    )
-                })}
+        <SpecContext.Provider value={{spec, setSpec, modalActive, setModalActive, children}}>
+            {children}
+        </SpecContext.Provider>
+    );
+};
+
+const About = () => {
+    return(
+        <WithSpec>
+            <div className="container">
+                <h1 className="main_title">Reception</h1>
+                <SpecialtyCard />
+                <DoctorsList />
+                <Modal />
             </div>
+        </WithSpec>
+    );
+};
 
-        </div>
-    )
-}
 
-export default About
+export default About;

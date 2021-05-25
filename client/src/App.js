@@ -1,6 +1,6 @@
-import { Header } from './components';
-import { Route } from 'react-router-dom';
-import { Home, About, Doctors, Contacts, MainImg, Schedule, Ambulance, CallDoctor, Reception } from './pages';
+import {Header} from './components';
+import {Route} from 'react-router-dom';
+import {Home, About, Doctors, Contacts, MainImg, Schedule, Ambulance, CallDoctor, Reception} from './pages';
 
 function App() {
     return (

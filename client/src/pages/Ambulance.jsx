@@ -1,11 +1,11 @@
-import React from 'react'
+import React from 'react';
 
 function Ambulance() {
     return (
         <div className="container">
-            <h1 class="main_title">Ambulance</h1>
+            <h1 className="main_title">Ambulance</h1>
         </div>
-    )
+    );
 }
 
-export default Ambulance
+export default Ambulance;
