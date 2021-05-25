@@ -1,27 +1,23 @@
-import React, {useEffect, useState} from 'react';
-import Axios from 'axios';
+import React from 'react';
+import useSWR from 'swr';
+
 import '../scss/doctors.scss';
 
-
 function Doctors() {
-    const [doctorList, setDoctorList] = useState([]);
-    useEffect(() => {
-        Axios.get('http://localhost:3001/api/get-doctors').then((response) => {
-            setDoctorList(response.data);
-        }, []);
-    });
+
+    const {data: doctorList} = useSWR('http://localhost:3001/api/get-doctors');
 
     return (
         <div className="container">
             <h1 className="main_title">Doctors</h1>
             <div className="doctors_cards">
-                {doctorList && doctorList.map(val => {
+                {doctorList && doctorList.map(({id, image, full_name: fullName, specialty, position}) => {
                     return (
-                        <div key={val.id} className="doctor_card">
-                            <a><img src={val.image} /></a>
-                            <a className="name">{val.full_name}</a>
-                            <a className="specialty">{val.specialty}</a>
-                            <a className="position">{val.position}</a>
+                        <div key={id} className="doctor_card">
+                            <a><img src={image} /></a>
+                            <a className="name">{fullName}</a>
+                            <a className="specialty">{specialty}</a>
+                            <a className="position">{position}</a>
                         </div>
                     );
                 })}

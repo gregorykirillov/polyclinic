@@ -6,10 +6,10 @@ const mysql = require('mysql');
 const dotenv = require('dotenv').config()
 
 const db = mysql.createPool({
-    host: "127.0.0.1",
-    user: "root",
+    host: process.env.REACT_APP_DB_HOST,
+    user: process.env.REACT_APP_DB_USERNAME,
     password: process.env.REACT_APP_DB_PASSWORD,
-    database: "CRUDDatabase"
+    database: process.env.REACT_APP_DB_DATABASE
 })
 
 const port = 3001;
@@ -23,7 +23,6 @@ app.listen(port, () => {
 })
 
 app.get('/api/get-doctors', (req, res) => {
-
     const sqlInsert = "SELECT * FROM staff;"
 
     db.query(sqlInsert, (err, result) => {
@@ -32,18 +31,35 @@ app.get('/api/get-doctors', (req, res) => {
 })
 
 app.get('/api/get-specialties', (req, res) => {
-
-    const sqlInsert = "SELECT specialty FROM cruddatabase.staff GROUP BY specialty;"
+    const sqlInsert = "SELECT id, specialty FROM staff GROUP BY specialty;"
 
     db.query(sqlInsert, (err, result) => {
         res.send(result)
     })
 })
 
-app.post('/api/get-doctors-by-specialty', (req, res) => {
+app.get('/api/get-doctors-by-specialty', (req, res) => {
+    const specialty = req.query.specialty;
+    const sqlInsert = specialty != "null" ? `SELECT id, full_name, specialty, image FROM staff WHERE specialty = '${specialty}';` : null;
+    sqlInsert && db.query(sqlInsert, (err, result) => {
+        res.send(result)
+    })
+})
 
-    const sqlInsert = `SELECT * FROM cruddatabase.staff WHERE specialty = '${req.body.specialty}';`
-    db.query(sqlInsert, (err, result) => {
+app.get('/api/get-doctor-info', (req, res) => {
+    const specialty = req.query.id;
+    const sqlInsert = specialty != "null" ? `SELECT * FROM staff WHERE id = '${specialty}';` : null;
+    
+    sqlInsert && db.query(sqlInsert, (err, result) => {
+        res.send(result)
+    })
+})
+
+app.get('/api/get-doctor-schedule', (req, res) => {
+    const id = req.query.id;
+    const sqlInsert = id != "null" ? `SELECT * FROM schedule WHERE staff_id = '${id}'` : null;
+    
+    sqlInsert && db.query(sqlInsert, (err, result) => {
         res.send(result)
     })
 })

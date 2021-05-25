@@ -1,4 +1,5 @@
 import React from 'react';
+
 import mainImg from '../assets/img/12max.jpg';
 
 function MainImage() {
