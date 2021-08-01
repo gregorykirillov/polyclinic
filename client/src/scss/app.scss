@@ -4,6 +4,14 @@
     box-sizing: border-box;
     font-family: Roboto;
 }
+
+@font-face {
+    font-family: 'Roboto';
+    font-weight: lighter;
+    font-weight: 200;
+    src: local('Roboto'), url(../assets/fonts/Roboto-Light.ttf) format('truetype');
+}
+
 @font-face {
     font-family: 'Roboto';
     src: local('Roboto'), url(../assets/fonts/Roboto-Regular.ttf) format('truetype');
@@ -35,7 +43,6 @@ nav {
     li {
         display: flex;
         align-items: center;
-        text-decoration: none;
         transition: 0.15s ease;
         float: left;
         height: 100%;
@@ -54,44 +61,50 @@ nav {
     }
 }
 
-.slider-nav {
+.nav {
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: center;
     text-align: center;
-    
-    li {
-        display: inline-block;
-        box-shadow: 0px 3px 8px rgb(0 0 0 / 10%);
-        border-radius: 9px;
-        margin-left: 20px;
-        transition: all 0.2s linear;
-        border: 2px solid #fff;
-        background-repeat: no-repeat;
-        background-position: 10px center;
-        vertical-align: top; 
-        width: 270px;
-        list-style: none; 
-        height: 70px; 
-        position: relative; 
-        top: 0;
-        background-color: #fff; 
-    }
 
     a {
-        &:nth-child(1) li {
-            background-image: url("../assets/svg/doctor-stethoscope.svg");
-            margin-left: 0;
-        }
+        text-decoration: none;
+        color: #272727;
+    }
+    
+    li {
+        display: flex;
+        align-items: center;
+        box-shadow: 0px 3px 8px rgb(0 0 0 / 0.2);
+        border-radius: 9px;
+        margin: 10px;
+        cursor: pointer;
+        transition: all 0.2s linear;
+        background-repeat: no-repeat;
+        background-position: 10px center;
+        width: 270px;
+        height: 70px; 
+        padding: 0 0 0 65px;
 
-        &:nth-child(2) li {
-            background-image: url("../assets/svg/clipboard-with-list.svg");
+        &:hover {
+            background-color: #ffd9003a;
         }
+    }
+    
+    a:nth-child(1) li {
+        background-image: url("../assets/svg/doctor-stethoscope.svg");
+    }
 
-        &:nth-child(3) li {
-            background-image: url("../assets/svg/emergency-ambulance.svg");
-        }
+    a:nth-child(2) li {
+        background-image: url("../assets/svg/clipboard-with-list.svg");
+    }
 
-        &:nth-child(4) li {
-            background-image: url("../assets/svg/hospital-bed.svg");
-        }
+    a:nth-child(3) li {
+        background-image: url("../assets/svg/emergency-ambulance.svg");
+    }
+
+    a:nth-child(4) li {
+        background-image: url("../assets/svg/hospital-bed.svg");
     }
 
     span {
@@ -117,35 +130,32 @@ nav {
         max-width: 768px;
     }
 
-    .slider-nav {
+    .nav {
         margin: 0 auto;
-        width: 570px;
+        width: 100%;
 
-        a {
-            &:nth-child(3) li {
-                margin-left: 0;
-                margin-top: 10px;
-            }
-
-            &:nth-child(4) li {
-                margin-top: 10px;
-            }
+        li {
+            max-width: 90%;
         }
+    }
+
+    .doctor_card {
+        max-width: 300px;
+        margin: 10px;
     }
 }
 
-@media (max-width: 700px) {
+@media (max-width: 800px) {
     .container {
-        max-width: 360px;
+        width: 90%;
     }
 
-    .slider-nav {
+    .nav {
         width: 100%;
         text-align: center;
 
         li {
             margin-top: 10px;
-            margin-left: 0;
         }
     }
 }

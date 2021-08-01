@@ -1,11 +1,11 @@
-import React from 'react'
+import React from 'react';
 
 function Schedule() {
     return (
         <div className="container">
-            <h1 class="main_title">Schedule</h1>
+            <h1 className="main_title">Schedule</h1>
         </div>
-    )
+    );
 }
 
-export default Schedule
+export default Schedule;

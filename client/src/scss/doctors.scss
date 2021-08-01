@@ -16,24 +16,25 @@
     box-shadow: 0 0px 7px rgb(0 0 0 / 10%);
     padding: 27px 0 0 0;
 
+    .name {
+        font-size: 20px;
+        padding: 7px;
+    }
+
+    .specialty {
+        font-size: 18px;
+        color: #B1B1B1;
+    }
+    
+    .position {
+        padding: 10px;
+        font-size: 14px;
+        color: #DDA12F;
+    }
+
     img {
         border-radius: 50%;
         width: 85%;
+        aspect-ratio: 1;
     }
-}
-
-.name {
-    font-size: 20px;
-    padding: 7px;
-}
-
-.specialty {
-    font-size: 18px;
-    color: #B1B1B1;
-}
-
-.position {
-    padding: 10px;
-    font-size: 14px;
-    color: #DDA12F;
 }

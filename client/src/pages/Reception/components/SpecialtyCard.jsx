@@ -1,23 +1,32 @@
 import React from 'react';
 import useSWR from 'swr';
+import {getSpecUrl} from '../../Admin/pages/routes';
 
-function SpecialtyCard({ setDoctors }) {
-    const { data, error } = useSWR('http://localhost:3001/api/get-specialties')
+import {useSpec} from '../index';
 
-    if (error) return <div>failed to load</div>
-    if (!data) return <div>loading...</div>
+const useSpecsList = () =>
+    useSWR(getSpecUrl);
+
+const SpecialtyCard = () => {
+    const {setSpec} = useSpec();
+    const {data, error} = useSpecsList();
+
+    if (error) return <div>Ошибка загрузки</div>;
+    if (!data) return <div>Загрузка...</div>;
 
     return (
         <div className="specialty_cards">
-            {data.map((val) => {
+            {data.map(({specialty, id}) => {
                 return (
-                    <div className="specialty_card">
-                        <button onClick={() => setDoctors(val.specialty)}>{val.specialty}</button>
+                    <div key={id} className="specialty_card">
+                        <li onClick={() => setSpec(id)}>
+                            {specialty}
+                        </li>
                     </div>
-                )
+                );
             })}
         </div>
-    )
-}
+    );
+};
 
-export default SpecialtyCard
+export default SpecialtyCard;
