@@ -1,10 +1,12 @@
 import React from 'react';
 import useSWR from 'swr';
+import {getDocBySpecUrl} from '../../Admin/pages/routes';
 
 import {useSpec} from '../index';
+import {selectedDate} from './Modal/Schedule';
 
 const useDoctors = spec =>
-    useSWR('http://localhost:3001/api/get-doctors-by-specialty?specialty=' + spec);
+    useSWR(getDocBySpecUrl + spec);
 
 const DoctorsList = () => {
     const {spec} = useSpec();
@@ -13,28 +15,27 @@ const DoctorsList = () => {
 
     return (
         <div className="doctors">
-            {
-                doctors && doctors.map(({id, full_name: fullName, specialty, image}) => (
-                    <div key={id} className="doctor">
-                        <p>{fullName}</p>
-                        <a className="register" onClick={
-                            () => register(setModalActive, {id, fullName, specialty, image})
-                        }>Записаться</a>
-                    </div>
-                ))
-            }
+            {doctors?.map(({id, name: fullName, specialty, image}) => (
+                <div key={id} className="doctor">
+                    <p>{fullName}</p>
+                    <a className="register" onClick={
+                        () => register(setModalActive, {id, fullName, specialty, image})
+                    }>Записаться</a>
+                </div>
+            ))}
         </div>
     );
 };
 
-export const register = (setModalActive, {...props}) => {
+export const doctorInfo = {};
+
+const register = (setModalActive, {...props}) => {
     setModalActive(true);
+    selectedDate.length = 0;
 
     for(const key in props) {
         doctorInfo[key] = props[key];
     }
 };
-
-export const doctorInfo = {};
 
 export default DoctorsList;

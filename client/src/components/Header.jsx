@@ -11,7 +11,8 @@ function Header() {
                     <Link to="/"><li><img src={homeSvg} alt="" /></li></Link>
                     <Link to="/about"><li>О нас</li></Link>
                     <Link to="/doctors"><li>Врачи</li></Link>
-                    <Link to="/contacts"><li>Контакты</li></Link>
+                    {/* <Link to="/contacts"><li>Контакты</li></Link> */}
+                    <Link to="/admin"><li>Админ</li></Link>
                 </ul>
             </nav>
         </div>

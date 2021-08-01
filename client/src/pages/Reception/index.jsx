@@ -31,7 +31,7 @@ const About = () => {
     return(
         <WithSpec>
             <div className="container">
-                <h1 className="main_title">Reception</h1>
+                <h1 className="main_title">Запись на приём</h1>
                 <SpecialtyCard />
                 <DoctorsList />
                 <Modal />

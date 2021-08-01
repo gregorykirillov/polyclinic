@@ -1,6 +1,7 @@
 export {default as Home} from './Home';
-export {default as About} from './About';
+export {default as About} from './About/index';
 export {default as Doctors} from './Doctors';
+export {default as NotFound} from './NotFound';
 export {default as Schedule} from './Schedule';
 export {default as Ambulance} from './Ambulance';
 export {default as Reception} from './Reception/index';
