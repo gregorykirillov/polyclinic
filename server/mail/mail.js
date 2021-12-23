@@ -2,7 +2,7 @@ import nodemailer from 'nodemailer';
 import {text} from './messageTemplate.js';
 import {mailUser, mailPassword, mailReceiver} from '../config.js';
 
-async function Mail(body){
+const Mail = async body => {
     let transporter = nodemailer.createTransport({
         host: "smtp.yandex.ru",
         port: 465,

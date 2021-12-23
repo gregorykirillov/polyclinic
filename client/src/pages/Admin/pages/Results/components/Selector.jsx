@@ -1,8 +1,7 @@
-/* eslint-disable no-unused-vars */
 import React from 'react';
 import useSWR from 'swr';
 
-function Selector({defaultName, name, url}) {
+const Selector = ({defaultName, name, url}) => {
     const {data: options} = useSWR(url);
 
     return (
@@ -15,6 +14,6 @@ function Selector({defaultName, name, url}) {
             ))}
         </select>
     );
-}
+};
 
 export default Selector;

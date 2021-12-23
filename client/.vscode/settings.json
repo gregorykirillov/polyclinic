@@ -1,6 +1,4 @@
 {
-    "eslint.run": "onSave",
-    "eslint.format.enable": true,
     "typescript.format.enable": true,
     
     "editor.formatOnSaveMode": "file",

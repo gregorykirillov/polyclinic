@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import {setSpecUrl, getSpecUrl, delSpecUrl} from '.././routes';
 import {mutate} from 'swr';
 
@@ -16,7 +15,7 @@ export const onClearItem = async (id, specialty) => {
     if (confirm(`Вы действительно хотите удалить ${specialty}?\n\nВНИМАНИЕ!\n` +
     'При удалении специальности удалятся все доктора этой специальности')) {
         await fetch(delSpecUrl, {
-            method: 'POST',
+            method: 'DELETE',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',

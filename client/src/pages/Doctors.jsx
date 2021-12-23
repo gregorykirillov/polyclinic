@@ -1,10 +1,11 @@
 import React from 'react';
 import useSWR from 'swr';
 
+import {getDocUrl} from './Admin/pages/routes';
 import '../scss/doctors.scss';
 
-function Doctors() {
-    const {data: doctorList} = useSWR('http://localhost:3001/api/get-doctors');
+const Doctors = () => {
+    const {data: doctorList} = useSWR(getDocUrl);
 
     return (
         <div className="container">
@@ -23,6 +24,6 @@ function Doctors() {
             </div>
         </div>
     );
-}
+};
 
 export default Doctors;

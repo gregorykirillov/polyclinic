@@ -1,4 +1,3 @@
-/* eslint-disable camelcase */
 import React, {useState, createContext, useContext} from 'react';
 
 import Modal from './components/Modal/Modal';
@@ -27,18 +26,17 @@ const WithSpec = ({children}) => {
     );
 };
 
-const About = () => {
-    return(
-        <WithSpec>
-            <div className="container">
-                <h1 className="main_title">Запись на приём</h1>
-                <SpecialtyCard />
-                <DoctorsList />
-                <Modal />
-            </div>
-        </WithSpec>
-    );
-};
-
+const About = () => (
+    <WithSpec>
+        <div className="container">
+            <h1 className="main_title">
+                Запись на приём
+            </h1>
+            <SpecialtyCard />
+            <DoctorsList />
+            <Modal />
+        </div>
+    </WithSpec>
+);
 
 export default About;

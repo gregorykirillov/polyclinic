@@ -16,7 +16,7 @@ export const onClearItem = async (id, fullName) => {
     if (confirm(`Вы действительно хотите удалить ${fullName}\n\nВНИМАНИЕ!\n` +
     'При удалении пациента также удалятся все осмотры этой пациента')) {
         await fetch(delPatUrl, {
-            method: 'POST',
+            method: 'DELETE',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',

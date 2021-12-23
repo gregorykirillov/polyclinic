@@ -5,7 +5,7 @@ import clearIcon from '../../../../assets/svg/clear_icon.svg';
 import {getSpecUrl} from '.././routes';
 import {onSubmit, onEditItem, onClearItem} from './ButtonsHandler';
 
-function Specialties() {
+const Specialties = () => {
     const {data: specialties} = useSWR(getSpecUrl);
 
     return (
@@ -30,15 +30,17 @@ function Specialties() {
                             <div className="doctorRow">
                                 <div className='info specialty' >{specialty}</div>
                                 <div className="buttons">
-                                    <img
-                                        src={editIcon}
+                                    <button
                                         className='edit_button'
                                         onClick={() => onEditItem({id, specialty})}
-                                    />
-                                    <img
-                                        src={clearIcon}
+                                    >
+                                        <img src={editIcon} />
+                                    </button>
+                                    <button 
                                         onClick={() => onClearItem(id, specialty)}
-                                    />
+                                    >
+                                        <img src={clearIcon} />
+                                    </button>
                                 </div>
                             </div>
                         </li>
@@ -47,6 +49,6 @@ function Specialties() {
             </div>
         </div>
     );
-}
+};
 
 export default Specialties;

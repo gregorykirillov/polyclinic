@@ -1,5 +1,3 @@
-// import React from 'react';
-
 import {formUrl} from '../../../Admin/pages/routes';
 import {doctorInfo} from '../DoctorsList';
 import {selectedDate} from './Schedule';

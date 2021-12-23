@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import {delDiagUrl, getDiagUrl, setDiagUrl} from '.././routes';
 import {mutate} from 'swr';
 
@@ -15,7 +14,7 @@ export const onEditItem = ({...props}) => {
 export const onClearItem = async ({id, name}) => {
     if (confirm(`Вы действительно хотите удалить ${name}?`)) {
         await fetch(delDiagUrl, {
-            method: 'POST',
+            method: 'DELETE',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
@@ -35,7 +34,6 @@ export const onSubmit = async () => {
         alert('Выберите элемент для изменения');
         return;
     }
-
 
     postData[diagnose.name] = diagnose.value;
     diagnose.value = '';

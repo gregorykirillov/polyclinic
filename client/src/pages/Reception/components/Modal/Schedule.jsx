@@ -1,22 +1,22 @@
-/* eslint-disable react-hooks/rules-of-hooks */
-import React from 'react';
+import React, {useState} from 'react';
 import useSWR from 'swr';
 import {getDocSchUrl} from '../../../Admin/pages/routes';
 
-// eslint-disable-next-line prefer-const
 export let selectedDate = [];
 
-function Schedule({id}) {
+const Schedule = ({id}) => {
+    const [activeDay, setActiveDay] = useState(null);
     const day = new Date();
+    const nameDays = ['вс', 'пн', 'вт', 'ср', 'чт', 'пт', 'сб'];
     const weekDays = [];
     const workDays = [];
-    const nameDays = ['вс', 'пн', 'вт', 'ср', 'чт', 'пт', 'сб'];
+    
 
-    const onClickSchedule = (...props) => {
+    const onClickSchedule = (day, ...props) => {
+        setActiveDay(day);
         selectedDate = props;
     };
 
-    // Получаю дни с расписанием
     const {data: schedule} = id ? useSWR(getDocSchUrl + id) : {};
 
     schedule?.map(({day_id: dayId, time_start: timeStart, time_end: timeEnd}) => {
@@ -35,17 +35,27 @@ function Schedule({id}) {
 
     return (
         <div className="schedule">
-            {weekDays.length ? weekDays.map(({day, date, timeStart, timeEnd}) => (
-                <li key={day} className="schedule-button" onClick={
-                    () => onClickSchedule(date, timeStart, timeEnd)
-                }>
-                    <p>{date} ({nameDays[day]})</p>
-                    <p>{timeStart} - {timeEnd}</p>
-                </li>
-            )) : (<p>Регистрация по времени недоступна</p>)
+            {weekDays.length ? weekDays.map(({day, date, timeStart, timeEnd}) => {
+                console.log(day, activeDay);
+                return (
+                    <li 
+                        key={day}
+                        className={
+                            activeDay === day ?
+                                'schedule-button active' :
+                                'schedule-button'
+                        }
+                        onClick={
+                            () => onClickSchedule(day, date, timeStart, timeEnd)
+                        }>
+                        <p>{date} ({nameDays[day]})</p>
+                        <p>{timeStart} - {timeEnd}</p>
+                    </li>
+                );}
+            ) : (<p>Регистрация по времени недоступна</p>)
             }
         </div>
     );
-}
+};
 
 export default Schedule;

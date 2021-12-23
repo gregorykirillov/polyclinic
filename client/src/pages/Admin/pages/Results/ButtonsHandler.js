@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import {getResUrl, setResUrl, delResUrl} from '.././routes';
 import {mutate} from 'swr';
 import {inputs} from './index';
@@ -16,7 +15,7 @@ export const onEditItem = ({...props}) => {
 export const onClearItem = async ({id, patientName}) => {
     if (confirm(`Вы действительно хотите удалить ${patientName}?`)) {
         await fetch(delResUrl, {
-            method: 'POST',
+            method: 'DELETE',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',

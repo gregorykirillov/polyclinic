@@ -6,5 +6,4 @@ export {default as Schedule} from './Schedule';
 export {default as Ambulance} from './Ambulance';
 export {default as Reception} from './Reception/index';
 export {default as CallDoctor} from './CallDoctor';
-export {default as MainImg} from '../components/MainImg';
 export {default as Contacts} from './Contacts';

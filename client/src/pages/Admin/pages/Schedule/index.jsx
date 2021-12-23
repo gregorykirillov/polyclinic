@@ -23,7 +23,7 @@ const WithModal = ({children}) => {
     );
 };
 
-function DoctorsSchedule() {
+const DoctorsSchedule = () => {
 
     useEffect(() => {
         inputs = document.getElementsByClassName('input');
@@ -40,6 +40,6 @@ function DoctorsSchedule() {
             </div>
         </WithModal>
     );
-}
+};
 
 export default DoctorsSchedule;

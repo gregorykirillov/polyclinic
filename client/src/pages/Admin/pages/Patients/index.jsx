@@ -9,7 +9,7 @@ import clearIcon from '../../../../assets/svg/clear_icon.svg';
 
 export let inputs;
 
-function Doctors() {
+const Doctors = () => {
     const {data: patients} = useSWR(getPatUrl);
 
     useEffect(() => {
@@ -47,7 +47,7 @@ function Doctors() {
                             <div className='info address'>{address}</div>
                             <div className="info phone">{phone}</div>
                             <div className="buttons">
-                                <img src={editIcon}
+                                <button
                                     className='edit_button'
                                     onClick={() => onEditItem({
                                         id,
@@ -56,8 +56,14 @@ function Doctors() {
                                         address,
                                         phone,
                                     })}
-                                />
-                                <img src={clearIcon} onClick={() => onClearItem(id, fullName)} />
+                                >
+                                    <img src={editIcon} />
+                                </button>
+                                <button
+                                    onClick={() => onClearItem(id, fullName)}
+                                >
+                                    <img src={clearIcon} />
+                                </button>
                             </div>
                         </div>
                     );
@@ -65,6 +71,6 @@ function Doctors() {
             </div>
         </div>
     );
-}
+};
 
 export default Doctors;

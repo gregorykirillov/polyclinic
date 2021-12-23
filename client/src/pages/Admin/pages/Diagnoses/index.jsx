@@ -5,7 +5,7 @@ import clearIcon from '../../../../assets/svg/clear_icon.svg';
 import {getDiagUrl} from '../routes';
 import {onSubmit, onEditItem, onClearItem} from './ButtonsHandler';
 
-function Diagnoses() {
+const Diagnoses = () => {
     const {data: diagnoses} = useSWR(getDiagUrl);
 
     return (
@@ -30,15 +30,17 @@ function Diagnoses() {
                             <div className="doctorRow">
                                 <div className='info diagnose'>{name}</div>
                                 <div className="buttons">
-                                    <img
-                                        src={editIcon}
+                                    <button
                                         className='edit_button'
                                         onClick={() => onEditItem({id, name})}
-                                    />
-                                    <img
-                                        src={clearIcon}
+                                    >
+                                        <img src={editIcon} />
+                                    </button>
+                                    <button
                                         onClick={() => onClearItem({id, name})}
-                                    />
+                                    >
+                                        <img src={clearIcon} />
+                                    </button>
                                 </div>
                             </div>
                         </li>
@@ -47,6 +49,6 @@ function Diagnoses() {
             </div>
         </div>
     );
-}
+};
 
 export default Diagnoses;

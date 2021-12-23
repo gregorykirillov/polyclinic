@@ -10,7 +10,7 @@ import Selector from './components/Selector';
 
 export let inputs;
 
-function Doctors() {
+const Doctors = () => {
     const {data: doctors} = useSWR(getDocUrl);
 
     useEffect(() => {
@@ -46,9 +46,13 @@ function Doctors() {
                             <div className='info fullName'>{fullName}</div>
                             <div className='info specialty'>{specialty}</div>
                             <div className='info position'>{position}</div>
-                            <div className="info img"><img className='imgPreview' src={image} /></div>
+                            <div className="info img">
+                                <a href={image} target="_blank" rel='noreferrer'>
+                                    <img className='imgPreview' src={image} />
+                                </a>
+                            </div>
                             <div className="buttons">
-                                <img src={editIcon}
+                                <button
                                     className='edit_button'
                                     onClick={() => onEditItem({
                                         id,
@@ -57,8 +61,14 @@ function Doctors() {
                                         position,
                                         image,
                                     })}
-                                />
-                                <img src={clearIcon} onClick={() => onClearItem(id, fullName)} />
+                                >
+                                    <img src={editIcon} />
+                                </button>
+                                <button
+                                    onClick={() => onClearItem(id, fullName)}
+                                >
+                                    <img src={clearIcon} />
+                                </button>
                             </div>
                         </div>
                     );
@@ -66,6 +76,6 @@ function Doctors() {
             </div>
         </div>
     );
-}
+};
 
 export default Doctors;

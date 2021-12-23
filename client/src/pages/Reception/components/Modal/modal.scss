@@ -27,12 +27,6 @@
     height: max-content;
 
     .schedule-button {
-        // margin: 5px;
-        // padding: 5px;
-        // border: 0;
-        // border-radius: 5px;
-        // transition: .3s;
-
         display: flex;
         cursor: pointer;
         margin: 5px;
@@ -48,6 +42,10 @@
         transition: 0.3s;
 
         &:hover {
+            background: #e4e4e4;
+        }
+
+        &.active {
             background: #d1d1d1;
         }
     }
@@ -60,6 +58,7 @@
         height: 30px;
         border: 0;
         transition: .5s;
+        border-radius: 4px;
 
         &:hover {
             background-color: rgb(209, 209, 209);
@@ -75,7 +74,6 @@
         flex-wrap: wrap;
         flex-direction: column;
         max-width: 350px;
-        // overflow-y: scroll;
 
         p {
             margin-bottom: 5px;

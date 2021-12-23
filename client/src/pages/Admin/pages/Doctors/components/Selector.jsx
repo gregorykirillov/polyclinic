@@ -2,7 +2,7 @@ import React from 'react';
 import useSWR from 'swr';
 import {getSpecUrl} from '../../routes';
 
-function Selector() {
+const Selector = () => {
     const {data: specialties} = useSWR(getSpecUrl);
 
     return (
@@ -15,6 +15,6 @@ function Selector() {
             ))}
         </select>
     );
-}
+};
 
 export default Selector;

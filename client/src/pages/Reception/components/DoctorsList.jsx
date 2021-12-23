@@ -18,9 +18,11 @@ const DoctorsList = () => {
             {doctors?.map(({id, name: fullName, specialty, image}) => (
                 <div key={id} className="doctor">
                     <p>{fullName}</p>
-                    <a className="register" onClick={
+                    <button className="register" onClick={
                         () => register(setModalActive, {id, fullName, specialty, image})
-                    }>Записаться</a>
+                    }>
+                        Записаться
+                    </button>
                 </div>
             ))}
         </div>

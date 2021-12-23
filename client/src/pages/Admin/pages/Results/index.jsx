@@ -8,7 +8,7 @@ import Selector from './components/Selector';
 
 export let inputs;
 
-function Results() {
+const Results = () => {
     const {data: results} = useSWR(getResUrl);
 
     useEffect(() => {
@@ -49,15 +49,17 @@ function Results() {
                                 <div className='info'>{date}</div>
                                 <div className='info'>{comments}</div>
                                 <div className="buttons">
-                                    <img
-                                        src={editIcon}
+                                    <button
                                         className='edit_button'
                                         onClick={() => onEditItem({id, patientName, staffName, diagnoseName, date, comments})}
-                                    />
-                                    <img
-                                        src={clearIcon}
+                                    >
+                                        <img src={editIcon} />
+                                    </button>
+                                    <button
                                         onClick={() => onClearItem({id, patientName})}
-                                    />
+                                    >
+                                        <img src={clearIcon} />
+                                    </button>
                                 </div>
                             </div>
                         </li>
@@ -66,6 +68,6 @@ function Results() {
             </div>
         </div>
     );
-}
+};
 
 export default Results;

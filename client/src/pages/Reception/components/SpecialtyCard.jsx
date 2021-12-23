@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import useSWR from 'swr';
 import {getSpecUrl} from '../../Admin/pages/routes';
 
@@ -10,6 +10,7 @@ const useSpecsList = () =>
 const SpecialtyCard = () => {
     const {setSpec} = useSpec();
     const {data, error} = useSpecsList();
+    const [activeId, setActiveId] = useState(null);
 
     if (error) return <div>Ошибка загрузки</div>;
     if (!data) return <div>Загрузка...</div>;
@@ -19,9 +20,15 @@ const SpecialtyCard = () => {
             {data.map(({specialty, id}) => {
                 return (
                     <div key={id} className="specialty_card">
-                        <li onClick={() => setSpec(id)}>
+                        <button
+                            className={id === activeId ? 'active' : null}
+                            onClick={() => {
+                                setSpec(id);
+                                setActiveId(id);
+                            }}
+                        >
                             {specialty}
-                        </li>
+                        </button>
                     </div>
                 );
             })}

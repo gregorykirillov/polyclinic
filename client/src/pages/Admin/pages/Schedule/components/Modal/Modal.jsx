@@ -1,6 +1,5 @@
 import React from 'react';
 
-import './modal.scss';
 import {useSpec} from '../../index';
 import {doctorInfo} from '../../ButtonsHandler';
 
