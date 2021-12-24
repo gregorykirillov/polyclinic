@@ -1,70 +1,42 @@
-# Getting Started with Create React App
+# Система управления поликлиникой
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Установка зависимостей
 
-## Available Scripts
+### `cd client` & `npm i`
 
-In the project directory, you can run:
+### `cd server` &  `npm i`
 
-### `npm start`
+Для работы приложения необходимо создать файл `.env` в директории `server`.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Файл `.env` должен содержать:
+- DB_HOST
+- DB_USERNAME
+- DB_PASSWORD
+- DB_DATABASE
+- MAIL_USER - *Почта пользователя, с которой будут отправляться заявки*
+- MAIL_PASSWORD - *Пароль пользователя, с почты которого будут отправляться заявки*
+- MAIL_RECEIVER - *Получатель, на почту которого будут отправляться заявки*
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+В данном проекте использовалась база данных **MySQL**, размещенная на хостинге **Heroku**
 
-### `npm test`
+## Запуск клиента
+### `cd client & npm start`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Запуск сервера
+### `cd server & npm run dev`
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Описание проекта
+### Возможности пользователя
+- Ознакомиться со списком врачей в соответствующем разделе
+- Записаться на приём врача
+  - Выбрать специальность врача
+  - Выбрать одного врача из предложенных в выбранной специальности
+  - Указать ФИО, телефон и выбрать дату приёма, если она доступна
+### Возможности администратора
+- *CRUD*
+  - специальностей врачей
+  - докторов с выбором одной из имеющихся специальностей, указанием ФИО, должности и URL фотографии
+  - расписания врачей с выбором даты начала и даты окончания работы в любой день недели
+  - пациентов с указанием ФИО, даты рождения, адреса и телефона
+  - осмотров пациентов с выбором одного из имеющихся пациентов, врачей и диагнозов, указанием даты осмотра и комментария
+  - диагнозов
