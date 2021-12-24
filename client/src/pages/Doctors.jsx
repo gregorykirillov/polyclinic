@@ -1,7 +1,7 @@
 import React from 'react';
 import useSWR from 'swr';
 
-import {getDocUrl} from './Admin/pages/routes';
+import {getDocUrl} from '../Admin/pages/routes';
 import '../scss/doctors.scss';
 
 const Doctors = () => {

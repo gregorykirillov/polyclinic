@@ -1,4 +1,5 @@
-import {formUrl} from '../../../Admin/pages/routes';
+import {formUrl} from '../../../../Admin/pages/routes';
+import request from '../../../../util/request';
 import {doctorInfo} from '../DoctorsList';
 import {selectedDate} from './Schedule';
 
@@ -14,11 +15,7 @@ export const sendEmail = () => {
     options['doctorSpecialty'] = doctorInfo.specialty;
     options['date'] = selectedDate;
 
-    fetch(formUrl, {
+    request(formUrl, {
         method: 'POST',
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-        },
         body: JSON.stringify(options)});
 };

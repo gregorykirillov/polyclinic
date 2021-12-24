@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import useSWR from 'swr';
-import {getSpecUrl} from '../../Admin/pages/routes';
+import {getSpecUrl} from '../../../Admin/pages/routes';
 
 import {useSpec} from '../index';
 

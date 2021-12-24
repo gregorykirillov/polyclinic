@@ -10,8 +10,8 @@
         "plugin:react/recommended"
     ],
     "globals": {
-        "REACT_APP_CLIENT_URL": true,
-        "REACT_APP_SERVER_URL": true
+        "CLIENT_URL": true,
+        "SERVER_URL": true
     },
     "parserOptions": {
         "ecmaFeatures": {
@@ -28,6 +28,7 @@
             "error",
             4
         ],
+        "no-unused-vars": "off",
         "eol-last": [
             "error"
         ],
@@ -42,6 +43,9 @@
         "react/prop-types": [
             "off"
         ],
-        "object-curly-spacing": ["error", "never"]
+        "object-curly-spacing": [
+            "error", 
+            "never"
+        ]
     }
 }

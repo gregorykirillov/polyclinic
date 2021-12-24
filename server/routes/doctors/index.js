@@ -4,7 +4,6 @@ const generateDoctorsRoutes = (app, db) => {
         "specialties WHERE specialties.id = specialty_id;"
     
         db.query(sqlInsert, (err, result) => {
-            console.log('Here2', result)
             res.send(result)
         })
     })
@@ -12,7 +11,7 @@ const generateDoctorsRoutes = (app, db) => {
     app.get('/api/get-doctors-by-specialty', (req, res) => {
         const specID = req.query.specID;
         
-        const sqlInsert = specID != "null" ?`SELECT staff.id, name, position, image, specialty FROM `
+        const sqlInsert = specID != "null" ? `SELECT staff.id, name, position, image, specialty FROM `
         + `staff, specialties WHERE specialties.id='${specID}' AND specialties.id = specialty_id;` : null;
         sqlInsert && db.query(sqlInsert, (err, result) => {
             res.send(result)

@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import useSWR from 'swr';
-import {getDocSchUrl} from '../../../Admin/pages/routes';
+import {getDocSchUrl} from '../../../../Admin/pages/routes';
 
 export let selectedDate = [];
 
@@ -17,7 +17,7 @@ const Schedule = ({id}) => {
         selectedDate = props;
     };
 
-    const {data: schedule} = id ? useSWR(getDocSchUrl + id) : {};
+    const {data: schedule} = id ? useSWR(getDocSchUrl(id)) : {};
 
     schedule?.map(({day_id: dayId, time_start: timeStart, time_end: timeEnd}) => {
         workDays[dayId] = {'timeStart': timeStart.slice(0, 5), 'timeEnd': timeEnd.slice(0, 5)};
@@ -36,7 +36,6 @@ const Schedule = ({id}) => {
     return (
         <div className="schedule">
             {weekDays.length ? weekDays.map(({day, date, timeStart, timeEnd}) => {
-                console.log(day, activeDay);
                 return (
                     <li 
                         key={day}

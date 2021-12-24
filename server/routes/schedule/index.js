@@ -9,11 +9,24 @@ const generateDoctorScheduleRoutes = (app, db) => {
     })
 
     app.post('/api/set-doctor-schedule', (req, res) => {
-
-        const sqlInsert = `INSERT INTO schedule VALUES (NULL, '845', '0', '8:00', '18:00');`;
+        const {doctorId, dayId, start, end} = req.body;
+        let sqlInsert = `SELECT * FROM schedule WHERE staff_id = ${doctorId} AND day_id = ${dayId}`;
         
-        sqlInsert && db.query(sqlInsert, (err, result) => {
-            res.send(result);
+        db.query(sqlInsert, (err, scheduleExists) => {
+            sqlInsert = null;
+            if (!scheduleExists.length) {
+                if (start) sqlInsert = `INSERT INTO schedule VALUES (NULL, '${doctorId}', '${dayId}', '${start}', '${end}');`;
+            }
+            else 
+                sqlInsert = !start ?
+                    `DELETE FROM schedule WHERE staff_id = ${doctorId} AND day_id = ${dayId}` :
+                    `UPDATE schedule SET time_start = '${start}', time_end = '${end}' WHERE staff_id = ${doctorId} AND day_id = ${dayId}`
+
+            sqlInsert ? 
+                db.query(sqlInsert, (err, result) => {
+                    res.send(result)
+                }) :
+                res.send(null);
         })
     })
 }

@@ -21,8 +21,8 @@ import {
     AdminDiagnoses,
     AdminResults,
     AdminSchedule
-} from './pages/Admin/pages';
-import LeftMenu from './pages/Admin/LeftMenu';
+} from './Admin/pages';
+import LeftMenu from './Admin/LeftMenu';
 
 const App = () => (
     <div className="wrapper">

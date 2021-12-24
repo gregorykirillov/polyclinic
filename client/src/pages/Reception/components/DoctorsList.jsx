@@ -1,12 +1,12 @@
 import React from 'react';
 import useSWR from 'swr';
-import {getDocBySpecUrl} from '../../Admin/pages/routes';
+import {getDocBySpecUrl} from '../../../Admin/pages/routes';
 
 import {useSpec} from '../index';
 import {selectedDate} from './Modal/Schedule';
 
 const useDoctors = spec =>
-    useSWR(getDocBySpecUrl + spec);
+    useSWR(getDocBySpecUrl(spec));
 
 const DoctorsList = () => {
     const {spec} = useSpec();
